@@ -1,4 +1,4 @@
-FROM php:8.1-fpm
+FROM php:8.2-fpm
 RUN apt-get update
 RUN docker-php-ext-install pdo pdo_mysql mysqli
 RUN apt-get install -y php8.1

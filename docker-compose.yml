@@ -32,7 +32,7 @@ services:
   mariadb:
     image: mariadb:11.6.1-ubi9-rc
     volumes:
-      - ./mariadb:/var/lib/mariadb
+      - ./mariadb:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: adb2k6
     container_name: mariadb
