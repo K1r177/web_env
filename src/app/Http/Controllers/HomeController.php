@@ -30,8 +30,12 @@ class HomeController extends Controller{
         //return $countries->toJson();
         //return response()->json($countries);
 
+        /* $country = Country::query()->first();
+        dump($country->toArray()); */
+
         $country = Country::query()->first();
         dump($country->toArray());
+        /* dump($country->Code); */
 
         //return View('home.index', compact('title'));
     }
