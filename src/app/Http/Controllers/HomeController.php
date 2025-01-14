@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\Tag;
 
 class HomeController extends Controller{
     public function index(){
@@ -49,8 +50,35 @@ class HomeController extends Controller{
             echo "{$category->title} | ({$category->posts_count})<br>";
         } */
 
-        $category = Category::query()->find(1);
-        dump($category->posts()->orderBy('id', 'desc')->get()->toArray());
+        /* $category = Category::query()->find(1);
+        dump($category->posts()->orderBy('id', 'desc')->get()->toArray()); */
+
+        /* $post = Post::query()->find(1);
+        $tags = $post->tags;
+        dump($tags);
+
+        foreach($tags as $tag){
+            //echo "{$tag->title} | {$tag->pivot->created_at}<br>";
+            echo "{$tag->title} | {$tag->ts->created_at}<br>";
+        } */
+
+        /* $tag = Tag::query()->find(3);
+        dump($tag->posts); */
+
+        //$posts = Post::all();
+        /* $posts = Post::with('tags')->get();
+        foreach($posts as $post){
+            echo "{$post->title}<br>";
+            foreach($post->tags as $tag){
+                echo"{$tag->title}<br>";
+            }
+            echo "<hr>";
+        } */
+
+        //dump(Category::query()->find(1)->posts);
+        //dump(Category::query()->find(1)->latestPost);
+        //dump(Category::query()->find(1)->oldestPost);
+        dump(Category::query(1)->find(1)->latestActivePost);
 
     }
 }
