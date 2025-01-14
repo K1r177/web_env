@@ -7,78 +7,56 @@ use App\Models\Tag;
 
 class HomeController extends Controller{
     public function index(){
+        /* Post::query()->create([
+            'title' => 'Post 6',
+            'slug' => 'post-6',
+            'content' => 'Lorem ipsum...',
+            'category_id' => 4
+        ]); */
         /* $category = Category::query()->find(2);
-        dump($category->toArray());
+        $category->posts()->save(new Post([
+            'title' => 'Post 7',
+            'slug' => 'post-7',
+            'content' => 'Lorem ipsum...'
+        ]));*/
+        /* $category = Category::query()->find(2);
+        $category->posts()->saveMany([
+            new Post([
+                'title' => 'Post 8',
+                'slug' => 'post-8',
+                'content' => 'Lorem ipsum...'
+            ]),
+            new Post([
+                'title' => 'Post 9',
+                'slug' => 'post-9',
+                'content' => 'Lorem ipsum...'
+            ]),
+        ]); */
+       /*  $category = Category::query()->find(3);
+        dump($category->posts);
+        $category->posts()->create([
+            'title' => 'Post 14',
+            'slug' => 'post-14',
+            'content' => 'Lorem ipsum...'
+        ]);
+        $category->refresh();
+        dump($category->posts); */
 
-        dump($category->title);
+        /* $category = Category::query()->find(4);
+        $post = Post::query()->find(15);
+        $post->category()->associate($category);
+        $post->save(); */
 
-        dump($category->getPost->toArray());
+        /* $post = Post::query()->find(15);
+        $post->category()->dissociate();
+        $post->save(); */
 
-        dump($category->getPost->title); */
-
-       /*  $post = Post::query()->where('category_id', '=', 2)->first();
-        dump($post->toArray()); */
-
-        /* $post = Post::query()->find(5);
-        dump($post->toArray());
-        dump($post->category);
-        dump($post->category->title); */
-
-        /* $category = Category::query()->find(1);
-        dump($category->toArray());
-        $posts = $category->posts;
-        dump($posts->toArray()); */
-
-        /* $post = Post::query()->find(6);
-        dump($post->toArray());
-        dump($post->category->toArray()); */
-
-        /* $categories = Category::with('posts')->get();
-        dump($categories->toArray());
-
-        foreach($categories as $category){
-            echo "{$category->title}<br>";
-            foreach($category->posts as $post){
-                echo "{$post->title}<br>";
-            }
-            echo '<hr>';
-        } */
-
-        /* $categories = Category::query()->withCount('posts')->get();
-        dump($categories);
-        foreach($categories as $category){
-            echo "{$category->title} | ({$category->posts_count})<br>";
-        } */
-
-        /* $category = Category::query()->find(1);
-        dump($category->posts()->orderBy('id', 'desc')->get()->toArray()); */
-
-        /* $post = Post::query()->find(1);
-        $tags = $post->tags;
-        dump($tags);
-
-        foreach($tags as $tag){
-            //echo "{$tag->title} | {$tag->pivot->created_at}<br>";
-            echo "{$tag->title} | {$tag->ts->created_at}<br>";
-        } */
-
-        /* $tag = Tag::query()->find(3);
-        dump($tag->posts); */
-
-        //$posts = Post::all();
-        /* $posts = Post::with('tags')->get();
-        foreach($posts as $post){
-            echo "{$post->title}<br>";
-            foreach($post->tags as $tag){
-                echo"{$tag->title}<br>";
-            }
-            echo "<hr>";
-        } */
-
-        //dump(Category::query()->find(1)->posts);
-        //dump(Category::query()->find(1)->latestPost);
-        //dump(Category::query()->find(1)->oldestPost);
-        dump(Category::query(1)->find(1)->latestActivePost);
+        $post = Post::query()->find(11);
+        //$post->tags()->attach(2);
+        //$post->tags()->attach([1, 4]);
+        //$post->tags()->detach([2]);
+        //$post->tags()->sync([1, 2, 4]);
+        $post->tags()->toggle([1, 2, 4, 5]);
 
     }
 }

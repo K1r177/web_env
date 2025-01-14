@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Post extends Model
 {
+    protected $fillable = ['title', 'content', 'category_id', 'status', 'slug'];
+
     public function category() : BelongsTo
     {
         return $this->belongsTo(Category::class);
