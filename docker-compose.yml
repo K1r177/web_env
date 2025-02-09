@@ -30,7 +30,7 @@ services:
     container_name: php
 
   mariadb:
-    image: mariadb:11.6.1-ubi9-rc
+    image: mariadb:11.7.1-ubi9-rc
     volumes:
       - ./mariadb:/var/lib/mysql
     environment:
